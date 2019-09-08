@@ -1,0 +1,11 @@
+<div class="history-title">Watch History</div>
+
+<div class="history-list" *ngIf="historyReady">
+  <p *ngFor="let video of history">
+  {{video.name}}
+  <button class="button" (click)="deleteHistory(video.youTubeId)">X</button>
+</p>
+  <div *ngIf="history===[]">
+    "there is no history saved!"
+  </div>
+</div>
