@@ -11,7 +11,8 @@ import {PlayerService} from '../player.service';
 export class HistoryComponent {
   historyReady = false;
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService,
+              private playerService: PlayerService) { }
 
   async ngOnInit() {
     await this.getAllHistory();
@@ -25,5 +26,9 @@ export class HistoryComponent {
   async deleteHistory(id) {
     await this.httpService.deleteHistory(id);
     await this.getAllHistory();
+  }
+
+  playVideo(id) {
+    this.playerService.playVideo(id);
   }
 }

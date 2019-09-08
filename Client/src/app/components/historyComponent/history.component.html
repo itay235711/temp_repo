@@ -1,7 +1,7 @@
 <div class="history-title">Watch History</div>
 
 <div class="history-list" *ngIf="historyReady">
-  <p *ngFor="let video of httpService.history">
+  <p *ngFor="let video of httpService.history" (click)="playVideo(video.youTubeId)">
   {{video.name}}
   <button class="button" (click)="deleteHistory(video.youTubeId)">X</button>
 </p>
