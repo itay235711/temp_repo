@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const lessMiddleware = require('less-middleware');
 const logger = require('morgan');
 
-const connect = require('./public/javascripts/DBModule');
+const DBModule = require('./public/javascripts/DBModule');
 const indexRouter = require('./routes/index');
 const historyRouter = require('./routes/history');
 
@@ -41,7 +41,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-connect.then(async () => {
+DBModule.prototype.connectDb(process.env.DB_URL).then(async () => {
   app.listen(process.env.PORT, () =>
       console.log(`app listening on port ${process.env.PORT}!`),
   );

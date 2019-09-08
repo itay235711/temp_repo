@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
-const connectDb = () => {
-    return mongoose.connect('mongodb://localhost/youTube');
+module.exports = class DBModule {
+    async connectDb(dbUrl) {
+        return await mongoose.connect(dbUrl);
+    }
 };
 
-module.exports = connectDb();
