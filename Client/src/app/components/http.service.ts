@@ -8,6 +8,7 @@ export class HttpService {
   apiKey = 'AIzaSyDzvVlr87fMi5kn0O4ooLx5VZru3XRXVzA';
   searchVideosUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video';
   serverUrl = 'http://localhost:3000';
+  history;
 
   async getSearchResults(toSearch) {
    const results = await this.http.get(`${this.searchVideosUrl}&q=${toSearch}&key=${this.apiKey}`).toPromise();
@@ -15,9 +16,8 @@ export class HttpService {
   }
 
   async getHistory() {
-    let hostory  = await this.http.get(`${this.serverUrl}/history/`).toPromise();
-    console.log(hostory);
-    return hostory;
+   this.history =  await this.http.get(`${this.serverUrl}/history/`).toPromise();
+    return this.history;
   }
 
   async deleteHistory(id) {
@@ -31,9 +31,5 @@ export class HttpService {
       id: id,
       name: name
     }).toPromise();
-  }
-
-  async getImageUrl(imageUrl) {
-    return await this.http.get(imageUrl, {responseType: 'blob'}).toPromise();
   }
 }

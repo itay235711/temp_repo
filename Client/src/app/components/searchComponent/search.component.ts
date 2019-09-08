@@ -34,7 +34,7 @@ export class SearchComponent {
     this.showDropDown = false;
     this.toSearch = '';
     await this.httpService.saveToHistory(id, name);
-    //this.historyComponent.history = await this.httpService.getHistory();
+    await this.httpService.getHistory();
   }
 
   getVideoName(name) {

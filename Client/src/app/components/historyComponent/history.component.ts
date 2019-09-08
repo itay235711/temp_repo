@@ -9,7 +9,6 @@ import {PlayerService} from '../player.service';
 })
 
 export class HistoryComponent {
-  history;
   historyReady = false;
 
   constructor(private httpService: HttpService) { }
@@ -19,7 +18,7 @@ export class HistoryComponent {
   }
 
   async getAllHistory() {
-    this.history =  await this.httpService.getHistory();
+    await this.httpService.getHistory();
     this.historyReady = true;
   }
 
