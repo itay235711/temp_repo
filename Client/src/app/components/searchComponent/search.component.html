@@ -1,0 +1,21 @@
+<div class="combo-container">
+ <span class="drop-down">
+<label>
+<input  type="text"
+        class="input-control"
+        placeholder="Search on YouTube.."
+        [(ngModel)]="name"
+        (ngModelChange)="search($event)"
+        (keypress)="search($event)"/>
+</label>
+ </span>
+  <div class="data-container" *ngIf="showDropDown">
+    <div *ngFor="let video of videoResults"  class="data-list">
+      <img class="ythumb" [src]="getImageUrl(video)" alt=""/>
+      <div class="info">
+        {{getVideoName(video.snippet.title)}}
+        <button class="button" (click)="playVideo(video.id.videoId, video.snippet.title)">play</button>
+      </div>
+    </div>
+  </div>
+</div>
